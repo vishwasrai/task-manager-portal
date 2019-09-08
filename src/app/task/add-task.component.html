@@ -1,0 +1,32 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add Task</h2>
+<form>
+  <div class="form-group">
+    <label for="task">Task:</label>
+    <input [(ngModel)]="taskDetail.task" placeholder="Task" name="task" class="form-control" id="task">
+  </div>
+
+  <div class="form-group">
+    <label for="priority">Priority: <font color="orange">0-30</font></label>
+    <input [(ngModel)]="taskDetail.priority" type="range" placeholder="Priority" name="priority" class="form-control" id="priority" min="0" max="30" value="10" step="2">
+  </div>
+
+  <div class="form-group">
+    <label for="parentTask">Parent Task:</label>
+    <input [(ngModel)]="taskDetail.parentTask" placeholder="Parent Task" name="parentTask" class="form-control" id="parentTask">
+  </div>
+
+  <div class="form-group">
+    <label for="startDate">Start Date:</label>
+    <input [(ngModel)]="taskDetail.startDate" placeholder="Start Date" name="startDate" class="form-control" id="startDate">
+  </div>
+
+  <div class="form-group">
+    <label for="endDate">End Date:</label>
+    <input [(ngModel)]="taskDetail.endDate" placeholder="End Date" name="endDate" class="form-control" id="endDate">
+  </div>
+
+  <button class="btn btn-success" (click)="createTask()">Add Task</button>&nbsp;&nbsp;
+  <button type="button" class="btn btn-outline-dark" (click)="resetData()">Reset</button>
+</form>
+</div>

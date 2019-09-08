@@ -1,0 +1,109 @@
+<div class="col-md-6">
+    <h2 class="text-center">View Task</h2>
+  <form>
+    <div class="form-group">
+        <table>
+            <tr>
+                <td>
+                    <label for="task">Task:</label>
+                    <input [(ngModel)]="taskDetail.task" (keyup)="findTaskDetails()" placeholder="Task" name="task" class="form-control" id="task">
+                </td>
+                <td>
+                    <label for="parentTask">Parent Task:</label>
+                    <input [(ngModel)]="taskDetail.parentTask" (keyup)="findTaskDetails()" placeholder="Parent Task" name="parentTask" class="form-control" id="parentTask">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="priorityFrom">Priority From:</label>
+                    <input [(ngModel)]="taskDetail.priorityFrom" (keyup)="findTaskDetails()" placeholder="Priority From" name="priorityFrom" class="form-control" id="priorityFrom">
+                </td>
+                <td>
+                    <label for="priorityTo">Priority To:</label>
+                    <input [(ngModel)]="taskDetail.priorityTo" (keyup)="findTaskDetails()" placeholder="Priority To" name="priorityTo" class="form-control" id="priorityTo">
+                </td>
+                <td>
+                    <label for="startDate">Start Date:</label>
+                    <input [(ngModel)]="taskDetail.startDate" (keyup)="findTaskDetails()" placeholder="Start Date" name="startDate" class="form-control" id="startDate">
+                </td>
+                <td>
+                    <label for="endDate">End Date:</label>
+                    <input [(ngModel)]="taskDetail.endDate" (keyup)="findTaskDetails()" placeholder="End Date" name="endDate" class="form-control" id="endDate">
+                </td>
+            </tr>
+        </table>  
+        <hr>  
+        <table width="800" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Task</th>
+                <th>Parent</th>
+                <th>Priority</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let taskData of taskDatas" align="center">
+                <td>{{taskData.task}}</td>
+                <td>{{taskData.parentTask}}</td>
+                <td>{{taskData.priority}}</td>
+                <td>{{taskData.startDate}}</td>
+                <td>{{taskData.endDate}}</td>
+                <td><button class="btn btn-success" (click)="editTask(content,taskData)">Edit Task</button></td>
+                <td><button class="btn btn-danger" (click)="deleteTask(taskData)"> End Task</button></td>
+            </tr>
+            </tbody>
+        </table>  
+    </div>
+  </form>  
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Update Task</h4>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+            <table>
+                <tr>
+                  <td><label for="task">Task:</label></td>
+                  <td>
+                    <input [(ngModel)]="taskInfo.task" placeholder="Task" name="task" class="form-control" id="task">
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="parentTask">Parent Task:</label></td>
+                  <td>
+                    <input [(ngModel)]="taskInfo.parentTask" placeholder="Parent Task" name="parentTask" class="form-control" id="parentTask">
+                  </td>
+                </tr>
+                  <tr>
+                    <td><label for="priority">Priority:</label></td>                    
+                    <td>
+                      <input [(ngModel)]="taskInfo.priority" type="range" placeholder="Priority" name="priority" class="form-control" id="priority" min="0" max="30" value="10" step="2">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="startDate">Start Date:</label></td>
+                    <td>
+                      <input [(ngModel)]="taskInfo.startDate" (keyup)="findTaskDetails()" placeholder="Start Date" name="startDate" class="form-control" id="startDate">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="endDate">End Date:</label></td>
+                    <td>
+                      <input [(ngModel)]="taskInfo.endDate" (keyup)="findTaskDetails()" placeholder="End Date" name="endDate" class="form-control" id="endDate">
+                    </td>
+                  </tr>
+              </table>                  
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" (click)="updateTask(content)">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+  </ng-template>
